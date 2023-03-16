@@ -1,0 +1,113 @@
+$color-light: #f6f8fa;
+$color-primary: #2da44e;
+$color-accent: #0969da;
+$color-error: red;
+
+$font-size: 16px;
+$modal-font-size: 1.25em;
+$h1-size: 1.5em;
+$border-radius: .25em;
+$page-width: 20em;
+
+$bg-light: $color-light;
+$bg-primary: $color-primary;
+$border-light: #d8dee4;
+
+
+html {
+    font-size: $font-size;
+    font-family: 'Roboto', sans-serif;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+
+    &__registration {
+        width: 100%;
+        max-width: 310px;
+    }
+
+    h1 {
+        font-weight: 400;
+        font-size: $h1-size;
+        text-align: center;
+    }
+}
+
+.form {
+    padding: 1em;
+    background-color: $bg-light;
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+
+    &__input {
+        margin-bottom: 1em;
+
+        &__label {
+            display: block;
+            margin-bottom: .3em;
+        }
+
+        &__text {
+            font-size: $font-size;
+            border-radius: $border-radius;
+            padding: .5em;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid $border-light;
+
+            &:focus, &:focus-visible {
+                border-color: $color-accent;
+                outline: 1px solid $color-accent;
+            }
+        }
+    }
+
+    &__button {
+        color: #fff;
+        font-size: $font-size;
+        background-color: $color-primary;
+        border-radius: $border-radius;
+        width: 100%;
+        padding: .7em;
+        border: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
+    }
+
+    &__errors {
+        padding: 10px;
+        margin-top: 0;
+        list-style: none;
+        border: 1px solid $color-error;
+        background-color: lighten($color-error, 45%);
+        border-radius: $border-radius;
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
+    &._loading {
+        .form {
+            &__button {
+                opacity: .3;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.modal {
+    @extend .form;
+
+    display: none;
+    text-align: center;
+    font-size: $modal-font-size;
+}
