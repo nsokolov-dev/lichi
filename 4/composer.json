@@ -11,5 +11,8 @@
             "email": "n.sokolov.dev@gmail.com"
         }
     ],
+    "platform": {
+        "php": ">=7.4"
+    },
     "require": {}
 }
