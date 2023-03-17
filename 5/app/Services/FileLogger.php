@@ -8,7 +8,8 @@ use DateTime;
 
 class FileLogger implements LoggerContract
 {
-    const LOG_FILE = ROOT_PATH . '/logs/app.log';
+    const LOGS_PATH = ROOT_PATH . '/logs';
+    const LOG_FILE = self::LOGS_PATH . '/app.log';
 
     /**
      * @param string|\App\Contracts\LoggableContract $message
@@ -29,6 +30,8 @@ class FileLogger implements LoggerContract
      */
     private function writeToLogFile(string $message): void
     {
+        is_dir(self::LOGS_PATH) || mkdir(self::LOGS_PATH);
+
         $fh = fopen(self::LOG_FILE, "a+");
         fwrite($fh, $this->formatMessage($message));
         fclose($fh);
